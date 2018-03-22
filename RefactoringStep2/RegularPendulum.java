@@ -9,9 +9,9 @@ public class RegularPendulum extends AbstractPendulum {
     /**
      * Creates a new Pendulum instance 
      */
-    public RegularPendulum (double inLength, double inMass, double inTheta0, double inG, double inDelta, double inDiss) {
+    public RegularPendulum (double inLength, double inMass, double inTheta0, GravityModel gModel, double inDelta, double inDiss) {
 		//GravityModel gm = new GravityConstant (inG);
-		super (inLength, inMass, inTheta0, inG);
+		super (inLength, inMass, inTheta0, gModel);
 		delta=inDelta;
 		dissipation = inDiss;
 		lastVel = 0;
@@ -22,8 +22,8 @@ public class RegularPendulum extends AbstractPendulum {
 	/**
 	 * Creates a new Pendulum instance, with the dissipation set to 0
 	 */
-    public RegularPendulum (double inLength, double inMass, double inTheta0, double inG, double inDelta) {
-		this (inLength, inMass, inTheta0, inG, inDelta, 0);
+    public RegularPendulum (double inLength, double inMass, double inTheta0, GravityModel gModel, double inDelta) {
+		this (inLength, inMass, inTheta0, gModel, inDelta, 0);
     }
 
     public void step () {
@@ -38,6 +38,4 @@ public class RegularPendulum extends AbstractPendulum {
     public double getLastAcceleration () { return lastAccel; }
     public double getLastTime () { return iterations*delta; }
     public double getDissipationConstant () { return dissipation; }
-	
-	public void setGravityModel (GravityModel gm) { this.g = gm; }
 }
