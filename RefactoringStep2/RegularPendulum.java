@@ -10,8 +10,8 @@ public class RegularPendulum extends AbstractPendulum {
      * Creates a new Pendulum instance 
      */
     public RegularPendulum (double inLength, double inMass, double inTheta0, double inG, double inDelta, double inDiss) {
-		GravityModel gm = new GravityConstant (inG);
-		super (inLength, inMass, inTheta0, gm);
+		//GravityModel gm = new GravityConstant (inG);
+		super (inLength, inMass, inTheta0, inG);
 		delta=inDelta;
 		dissipation = inDiss;
 		lastVel = 0;

@@ -5,7 +5,7 @@ public class GravityConstant implements GravityModel
 
 	public GravityConstant (double gc)
 	{
-		gravityConstant = gc;
+		this.gravityConstant = gc;
 	}
 	
 	public double getGravitationalField()

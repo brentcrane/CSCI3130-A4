@@ -17,7 +17,7 @@ public abstract class AbstractPendulum implements GravityModel{
      * inTheta0: angular displacement at t=0 (0<=theta0)
      * inG: gravitational field value to use
      */
-    public AbstractPendulum (double inLength, double inMass, double inTheta0, GravityModel inG) {
+    public AbstractPendulum (double inLength, double inMass, double inTheta0, double inG) {
 		if (validStringLength (inLength))
 			stringLength = inLength;
 		else
@@ -33,8 +33,10 @@ public abstract class AbstractPendulum implements GravityModel{
 		else
 			throw new IllegalArgumentException ("invalid angular displacement: " + inTheta0);
 			
-		if (validGC (inG.getGravitationalField()))
-			g = inG;
+		if (validGC (inG))
+		{
+			g = new GravityConstant(inG);
+		}
 		else
 			throw new IllegalArgumentException ("invalid local gravitational field: " + inG);
     }
